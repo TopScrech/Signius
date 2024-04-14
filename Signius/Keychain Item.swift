@@ -2,10 +2,10 @@ import Foundation
 
 struct KeychainItem {
     enum KeychainError: Error {
-        case noPassword
-        case unexpectedPasswordData
-        case unexpectedItemData
-        case unhandledError
+        case noPassword,
+             unexpectedPasswordData,
+             unexpectedItemData,
+             unhandledError
     }
     
     let service: String
@@ -32,13 +32,19 @@ struct KeychainItem {
         
         // Try to fetch the existing keychain item that matches the query
         var queryResult: AnyObject?
+        
         let status = withUnsafeMutablePointer(to: &queryResult) {
             SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
         }
         
         // Check the return status and throw an error if appropriate
-        guard status != errSecItemNotFound else { throw KeychainError.noPassword }
-        guard status == noErr else { throw KeychainError.unhandledError }
+        guard status != errSecItemNotFound else { 
+            throw KeychainError.noPassword
+        }
+        
+        guard status == noErr else {
+            throw KeychainError.unhandledError
+        }
         
         // Parse the password string from the query result
         guard let existingItem = queryResult as? [String: AnyObject],
@@ -90,7 +96,9 @@ struct KeychainItem {
         let status = SecItemDelete(query as CFDictionary)
         
         // Throw an error if an unexpected status was returned
-        guard status == noErr || status == errSecItemNotFound else { throw KeychainError.unhandledError }
+        guard status == noErr || status == errSecItemNotFound else {
+            throw KeychainError.unhandledError
+        }
     }
     
     // MARK: - Convenience

@@ -12,12 +12,12 @@
 		F32617662AE1857400DB402E /* Create User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32617652AE1857400DB402E /* Create User.swift */; };
 		F326176A2AE1A08C00DB402E /* Revoke SiwA key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32617692AE1A08C00DB402E /* Revoke SiwA key.swift */; };
 		F326176C2AE1A89D00DB402E /* Auth VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326176B2AE1A89D00DB402E /* Auth VM.swift */; };
-		F326176E2AE1A9BD00DB402E /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326176D2AE1A9BD00DB402E /* ParentView.swift */; };
+		F326176E2AE1A9BD00DB402E /* Parent View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326176D2AE1A9BD00DB402E /* Parent View.swift */; };
 		F3ABCC4C2A6DCC9400C30A7C /* Signius App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC4B2A6DCC9400C30A7C /* Signius App.swift */; };
-		F3ABCC4E2A6DCC9400C30A7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC4D2A6DCC9400C30A7C /* LoginView.swift */; };
+		F3ABCC4E2A6DCC9400C30A7C /* Login View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC4D2A6DCC9400C30A7C /* Login View.swift */; };
 		F3ABCC502A6DCC9700C30A7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3ABCC4F2A6DCC9700C30A7C /* Assets.xcassets */; };
 		F3ABCC5C2A6DCF1700C30A7C /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3ABCC5B2A6DCF1700C30A7C /* ScrechKit */; };
-		F3ABCC5E2A6DD6AF00C30A7C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC5D2A6DD6AF00C30A7C /* HomeView.swift */; };
+		F3ABCC5E2A6DD6AF00C30A7C /* Home View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC5D2A6DD6AF00C30A7C /* Home View.swift */; };
 		F3ABCC602A6DD85600C30A7C /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC5F2A6DD85600C30A7C /* App Container.swift */; };
 		F3ABCC662A6DD99D00C30A7C /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC632A6DD99D00C30A7C /* Nav State.swift */; };
 		F3ABCC672A6DD99D00C30A7C /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC642A6DD99D00C30A7C /* Nav Extension.swift */; };
@@ -33,13 +33,13 @@
 		F32617682AE19D9500DB402E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F32617692AE1A08C00DB402E /* Revoke SiwA key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Revoke SiwA key.swift"; sourceTree = "<group>"; };
 		F326176B2AE1A89D00DB402E /* Auth VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth VM.swift"; sourceTree = "<group>"; };
-		F326176D2AE1A9BD00DB402E /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
+		F326176D2AE1A9BD00DB402E /* Parent View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Parent View.swift"; sourceTree = "<group>"; };
 		F3ABCC482A6DCC9400C30A7C /* Signius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ABCC4B2A6DCC9400C30A7C /* Signius App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signius App.swift"; sourceTree = "<group>"; };
-		F3ABCC4D2A6DCC9400C30A7C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F3ABCC4D2A6DCC9400C30A7C /* Login View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login View.swift"; sourceTree = "<group>"; };
 		F3ABCC4F2A6DCC9700C30A7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3ABCC512A6DCC9700C30A7C /* Signius.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Signius.entitlements; sourceTree = "<group>"; };
-		F3ABCC5D2A6DD6AF00C30A7C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F3ABCC5D2A6DD6AF00C30A7C /* Home View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View.swift"; sourceTree = "<group>"; };
 		F3ABCC5F2A6DD85600C30A7C /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F3ABCC632A6DD99D00C30A7C /* Nav State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Nav State.swift"; sourceTree = "<group>"; };
 		F3ABCC642A6DD99D00C30A7C /* Nav Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
@@ -90,13 +90,13 @@
 				F3ABCC4B2A6DCC9400C30A7C /* Signius App.swift */,
 				F32617682AE19D9500DB402E /* Info.plist */,
 				F3ABCC692A6DD9AC00C30A7C /* Navigation */,
-				F326176D2AE1A9BD00DB402E /* ParentView.swift */,
-				F3ABCC4D2A6DCC9400C30A7C /* LoginView.swift */,
+				F326176D2AE1A9BD00DB402E /* Parent View.swift */,
+				F3ABCC4D2A6DCC9400C30A7C /* Login View.swift */,
 				F326176B2AE1A89D00DB402E /* Auth VM.swift */,
 				F3BDE2E12A6DE5C70032E81E /* Keychain Item.swift */,
 				F326176F2AE1B6A900DB402E /* Reserved */,
 				F3BDE2DE2A6DE5570032E81E /* Auth */,
-				F3ABCC5D2A6DD6AF00C30A7C /* HomeView.swift */,
+				F3ABCC5D2A6DD6AF00C30A7C /* Home View.swift */,
 				F3ABCC4F2A6DCC9700C30A7C /* Assets.xcassets */,
 				F3ABCC512A6DCC9700C30A7C /* Signius.entitlements */,
 			);
@@ -200,11 +200,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3ABCC5E2A6DD6AF00C30A7C /* HomeView.swift in Sources */,
+				F3ABCC5E2A6DD6AF00C30A7C /* Home View.swift in Sources */,
 				F326176C2AE1A89D00DB402E /* Auth VM.swift in Sources */,
-				F3ABCC4E2A6DCC9400C30A7C /* LoginView.swift in Sources */,
+				F3ABCC4E2A6DCC9400C30A7C /* Login View.swift in Sources */,
 				F3BDE2E22A6DE5C70032E81E /* Keychain Item.swift in Sources */,
-				F326176E2AE1A9BD00DB402E /* ParentView.swift in Sources */,
+				F326176E2AE1A9BD00DB402E /* Parent View.swift in Sources */,
 				F326176A2AE1A08C00DB402E /* Revoke SiwA key.swift in Sources */,
 				F3ABCC672A6DD99D00C30A7C /* Nav Extension.swift in Sources */,
 				F3BDE2E02A6DE56E0032E81E /* Validate Auth.swift in Sources */,

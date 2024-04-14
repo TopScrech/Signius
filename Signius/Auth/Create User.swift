@@ -4,8 +4,8 @@ func createUser(name: String, email: String, complition: @escaping (Result<User,
     let url = URL(string: "http://api.topscrech.dev/users/create")!
     var request = URLRequest(url: url)
     
-    let body = ["name": name, "email": email]
     let encoder = JSONEncoder()
+    let body = ["name": name, "email": email]
     
     request.httpMethod = "POST"
     request.httpBody = try? encoder.encode(body)
@@ -23,6 +23,7 @@ func createUser(name: String, email: String, complition: @escaping (Result<User,
         
         do {
             let decoder = JSONDecoder()
+            
             let user = try decoder.decode(User.self, from: data)
             
             if let stringData = String(data: data, encoding: .utf8) {

@@ -14,7 +14,7 @@ struct HomeView: View {
             Text(KeychainItem.currentUserIdentifier)
             
             Button("Log out") {
-//                revokeAppleToken(clientID: "8FQUA2F388", clientSecret: <#T##String#>, token: <#T##String#>, completion: <#T##(Bool, Error?) -> Void#>)
+                //                revokeAppleToken(clientID: "8FQUA2F388", clientSecret: <#T##String#>, token: <#T##String#>, completion: <#T##(Bool, Error?) -> Void#>)
                 signOut()
             }
         }
