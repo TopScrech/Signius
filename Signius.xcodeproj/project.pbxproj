@@ -7,19 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F3ABCC4C2A6DCC9400C30A7C /* SigniusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC4B2A6DCC9400C30A7C /* SigniusApp.swift */; };
-		F3ABCC4E2A6DCC9400C30A7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC4D2A6DCC9400C30A7C /* ContentView.swift */; };
+		F326175F2AE1836200DB402E /* User Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326175E2AE1836200DB402E /* User Model.swift */; };
+		F32617632AE1854300DB402E /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32617622AE1854300DB402E /* Errors.swift */; };
+		F32617662AE1857400DB402E /* Create User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32617652AE1857400DB402E /* Create User.swift */; };
+		F326176A2AE1A08C00DB402E /* Revoke SiwA key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32617692AE1A08C00DB402E /* Revoke SiwA key.swift */; };
+		F326176C2AE1A89D00DB402E /* Auth VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326176B2AE1A89D00DB402E /* Auth VM.swift */; };
+		F326176E2AE1A9BD00DB402E /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326176D2AE1A9BD00DB402E /* ParentView.swift */; };
+		F3ABCC4C2A6DCC9400C30A7C /* Signius App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC4B2A6DCC9400C30A7C /* Signius App.swift */; };
+		F3ABCC4E2A6DCC9400C30A7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC4D2A6DCC9400C30A7C /* LoginView.swift */; };
 		F3ABCC502A6DCC9700C30A7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3ABCC4F2A6DCC9700C30A7C /* Assets.xcassets */; };
-		F3ABCC542A6DCC9700C30A7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3ABCC532A6DCC9700C30A7C /* Preview Assets.xcassets */; };
+		F3ABCC5C2A6DCF1700C30A7C /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3ABCC5B2A6DCF1700C30A7C /* ScrechKit */; };
+		F3ABCC5E2A6DD6AF00C30A7C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC5D2A6DD6AF00C30A7C /* HomeView.swift */; };
+		F3ABCC602A6DD85600C30A7C /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC5F2A6DD85600C30A7C /* App Container.swift */; };
+		F3ABCC662A6DD99D00C30A7C /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC632A6DD99D00C30A7C /* Nav State.swift */; };
+		F3ABCC672A6DD99D00C30A7C /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC642A6DD99D00C30A7C /* Nav Extension.swift */; };
+		F3ABCC682A6DD99D00C30A7C /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ABCC652A6DD99D00C30A7C /* Nav Destinations.swift */; };
+		F3BDE2E02A6DE56E0032E81E /* Validate Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BDE2DF2A6DE56E0032E81E /* Validate Auth.swift */; };
+		F3BDE2E22A6DE5C70032E81E /* Keychain Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BDE2E12A6DE5C70032E81E /* Keychain Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F326175E2AE1836200DB402E /* User Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Model.swift"; sourceTree = "<group>"; };
+		F32617622AE1854300DB402E /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		F32617652AE1857400DB402E /* Create User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create User.swift"; sourceTree = "<group>"; };
+		F32617682AE19D9500DB402E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F32617692AE1A08C00DB402E /* Revoke SiwA key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Revoke SiwA key.swift"; sourceTree = "<group>"; };
+		F326176B2AE1A89D00DB402E /* Auth VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth VM.swift"; sourceTree = "<group>"; };
+		F326176D2AE1A9BD00DB402E /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		F3ABCC482A6DCC9400C30A7C /* Signius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signius.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3ABCC4B2A6DCC9400C30A7C /* SigniusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigniusApp.swift; sourceTree = "<group>"; };
-		F3ABCC4D2A6DCC9400C30A7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F3ABCC4B2A6DCC9400C30A7C /* Signius App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signius App.swift"; sourceTree = "<group>"; };
+		F3ABCC4D2A6DCC9400C30A7C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F3ABCC4F2A6DCC9700C30A7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3ABCC512A6DCC9700C30A7C /* Signius.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Signius.entitlements; sourceTree = "<group>"; };
-		F3ABCC532A6DCC9700C30A7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F3ABCC5D2A6DD6AF00C30A7C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F3ABCC5F2A6DD85600C30A7C /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
+		F3ABCC632A6DD99D00C30A7C /* Nav State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Nav State.swift"; sourceTree = "<group>"; };
+		F3ABCC642A6DD99D00C30A7C /* Nav Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
+		F3ABCC652A6DD99D00C30A7C /* Nav Destinations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
+		F3BDE2DF2A6DE56E0032E81E /* Validate Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validate Auth.swift"; sourceTree = "<group>"; };
+		F3BDE2E12A6DE5C70032E81E /* Keychain Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Keychain Item.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,12 +53,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ABCC5C2A6DCF1700C30A7C /* ScrechKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F326176F2AE1B6A900DB402E /* Reserved */ = {
+			isa = PBXGroup;
+			children = (
+				F32617692AE1A08C00DB402E /* Revoke SiwA key.swift */,
+			);
+			path = Reserved;
+			sourceTree = "<group>";
+		};
 		F3ABCC3F2A6DCC9400C30A7C = {
 			isa = PBXGroup;
 			children = (
@@ -52,21 +87,42 @@
 		F3ABCC4A2A6DCC9400C30A7C /* Signius */ = {
 			isa = PBXGroup;
 			children = (
-				F3ABCC4B2A6DCC9400C30A7C /* SigniusApp.swift */,
-				F3ABCC4D2A6DCC9400C30A7C /* ContentView.swift */,
+				F3ABCC4B2A6DCC9400C30A7C /* Signius App.swift */,
+				F32617682AE19D9500DB402E /* Info.plist */,
+				F3ABCC692A6DD9AC00C30A7C /* Navigation */,
+				F326176D2AE1A9BD00DB402E /* ParentView.swift */,
+				F3ABCC4D2A6DCC9400C30A7C /* LoginView.swift */,
+				F326176B2AE1A89D00DB402E /* Auth VM.swift */,
+				F3BDE2E12A6DE5C70032E81E /* Keychain Item.swift */,
+				F326176F2AE1B6A900DB402E /* Reserved */,
+				F3BDE2DE2A6DE5570032E81E /* Auth */,
+				F3ABCC5D2A6DD6AF00C30A7C /* HomeView.swift */,
 				F3ABCC4F2A6DCC9700C30A7C /* Assets.xcassets */,
 				F3ABCC512A6DCC9700C30A7C /* Signius.entitlements */,
-				F3ABCC522A6DCC9700C30A7C /* Preview Content */,
 			);
 			path = Signius;
 			sourceTree = "<group>";
 		};
-		F3ABCC522A6DCC9700C30A7C /* Preview Content */ = {
+		F3ABCC692A6DD9AC00C30A7C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				F3ABCC532A6DCC9700C30A7C /* Preview Assets.xcassets */,
+				F3ABCC5F2A6DD85600C30A7C /* App Container.swift */,
+				F3ABCC652A6DD99D00C30A7C /* Nav Destinations.swift */,
+				F3ABCC642A6DD99D00C30A7C /* Nav Extension.swift */,
+				F3ABCC632A6DD99D00C30A7C /* Nav State.swift */,
 			);
-			path = "Preview Content";
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F3BDE2DE2A6DE5570032E81E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F3BDE2DF2A6DE56E0032E81E /* Validate Auth.swift */,
+				F326175E2AE1836200DB402E /* User Model.swift */,
+				F32617622AE1854300DB402E /* Errors.swift */,
+				F32617652AE1857400DB402E /* Create User.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +141,9 @@
 			dependencies = (
 			);
 			name = Signius;
+			packageProductDependencies = (
+				F3ABCC5B2A6DCF1700C30A7C /* ScrechKit */,
+			);
 			productName = Signius;
 			productReference = F3ABCC482A6DCC9400C30A7C /* Signius.app */;
 			productType = "com.apple.product-type.application";
@@ -97,7 +156,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					F3ABCC472A6DCC9400C30A7C = {
 						CreatedOnToolsVersion = 15.0;
@@ -113,6 +172,9 @@
 				Base,
 			);
 			mainGroup = F3ABCC3F2A6DCC9400C30A7C;
+			packageReferences = (
+				F3ABCC5A2A6DCF1700C30A7C /* XCRemoteSwiftPackageReference "ScrechKit" */,
+			);
 			productRefGroup = F3ABCC492A6DCC9400C30A7C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +189,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3ABCC542A6DCC9700C30A7C /* Preview Assets.xcassets in Resources */,
 				F3ABCC502A6DCC9700C30A7C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,8 +200,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3ABCC4E2A6DCC9400C30A7C /* ContentView.swift in Sources */,
-				F3ABCC4C2A6DCC9400C30A7C /* SigniusApp.swift in Sources */,
+				F3ABCC5E2A6DD6AF00C30A7C /* HomeView.swift in Sources */,
+				F326176C2AE1A89D00DB402E /* Auth VM.swift in Sources */,
+				F3ABCC4E2A6DCC9400C30A7C /* LoginView.swift in Sources */,
+				F3BDE2E22A6DE5C70032E81E /* Keychain Item.swift in Sources */,
+				F326176E2AE1A9BD00DB402E /* ParentView.swift in Sources */,
+				F326176A2AE1A08C00DB402E /* Revoke SiwA key.swift in Sources */,
+				F3ABCC672A6DD99D00C30A7C /* Nav Extension.swift in Sources */,
+				F3BDE2E02A6DE56E0032E81E /* Validate Auth.swift in Sources */,
+				F3ABCC682A6DD99D00C30A7C /* Nav Destinations.swift in Sources */,
+				F3ABCC662A6DD99D00C30A7C /* Nav State.swift in Sources */,
+				F32617632AE1854300DB402E /* Errors.swift in Sources */,
+				F3ABCC602A6DD85600C30A7C /* App Container.swift in Sources */,
+				F326175F2AE1836200DB402E /* User Model.swift in Sources */,
+				F3ABCC4C2A6DCC9400C30A7C /* Signius App.swift in Sources */,
+				F32617662AE1857400DB402E /* Create User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +255,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -242,6 +317,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -269,11 +345,14 @@
 				CODE_SIGN_ENTITLEMENTS = Signius/Signius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Signius/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Signius/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -292,7 +371,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.topscrech.Signius;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -307,11 +387,14 @@
 				CODE_SIGN_ENTITLEMENTS = Signius/Signius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Signius/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Signius/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -330,7 +413,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.topscrech.Signius;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -359,6 +443,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F3ABCC5A2A6DCF1700C30A7C /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/ScrechKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F3ABCC5B2A6DCF1700C30A7C /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3ABCC5A2A6DCF1700C30A7C /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F3ABCC402A6DCC9400C30A7C /* Project object */;
 }
