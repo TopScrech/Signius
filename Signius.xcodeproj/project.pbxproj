@@ -6,23 +6,40 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F3905C042C6B190700469CA6 /* Signius.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C032C6B190700469CA6 /* Signius.swift */; };
+		F3905C062C6B190700469CA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C052C6B190700469CA6 /* ContentView.swift */; };
+		F3905C082C6B190700469CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3905C072C6B190700469CA6 /* Assets.xcassets */; };
+		F3905C132C6B193300469CA6 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C122C6B193300469CA6 /* AccountManager.swift */; };
+		F3905C152C6B193800469CA6 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C142C6B193800469CA6 /* File.swift */; };
+		F3905C172C6B194900469CA6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C162C6B194900469CA6 /* LoginView.swift */; };
+		F3905C1E2C6B1CF300469CA6 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3905C1D2C6B1CF300469CA6 /* ScrechKit */; };
+		F3905C212C6B1D1200469CA6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F3905C202C6B1D1200469CA6 /* Alamofire */; };
+		F3905C232C6B1D1200469CA6 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F3905C222C6B1D1200469CA6 /* AlamofireDynamic */; };
+		F3905C252C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C242C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F3905C002C6B190700469CA6 /* Signius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signius.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3905C032C6B190700469CA6 /* Signius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signius.swift; sourceTree = "<group>"; };
+		F3905C052C6B190700469CA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F3905C072C6B190700469CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3905C092C6B190700469CA6 /* Signius.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Signius.entitlements; sourceTree = "<group>"; };
+		F3905C122C6B193300469CA6 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		F3905C142C6B193800469CA6 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		F3905C162C6B194900469CA6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F3905C192C6B19BD00469CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F3905C242C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginWebAuthnRegistrationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		F3905C022C6B190700469CA6 /* Signius */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Signius;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F3905BFD2C6B190700469CA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3905C1E2C6B1CF300469CA6 /* ScrechKit in Frameworks */,
+				F3905C232C6B1D1200469CA6 /* AlamofireDynamic in Frameworks */,
+				F3905C212C6B1D1200469CA6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +49,7 @@
 		F3905BF72C6B190700469CA6 = {
 			isa = PBXGroup;
 			children = (
-				F3905C022C6B190700469CA6 /* Signius */,
+				F3905C182C6B195700469CA6 /* Signius */,
 				F3905C012C6B190700469CA6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +60,22 @@
 				F3905C002C6B190700469CA6 /* Signius.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F3905C182C6B195700469CA6 /* Signius */ = {
+			isa = PBXGroup;
+			children = (
+				F3905C192C6B19BD00469CA6 /* Info.plist */,
+				F3905C032C6B190700469CA6 /* Signius.swift */,
+				F3905C072C6B190700469CA6 /* Assets.xcassets */,
+				F3905C092C6B190700469CA6 /* Signius.entitlements */,
+				F3905C122C6B193300469CA6 /* AccountManager.swift */,
+				F3905C242C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift */,
+				F3905C052C6B190700469CA6 /* ContentView.swift */,
+				F3905C142C6B193800469CA6 /* File.swift */,
+				F3905C162C6B194900469CA6 /* LoginView.swift */,
+			);
+			path = Signius;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,11 +93,11 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				F3905C022C6B190700469CA6 /* Signius */,
-			);
 			name = Signius;
 			packageProductDependencies = (
+				F3905C1D2C6B1CF300469CA6 /* ScrechKit */,
+				F3905C202C6B1D1200469CA6 /* Alamofire */,
+				F3905C222C6B1D1200469CA6 /* AlamofireDynamic */,
 			);
 			productName = Signius;
 			productReference = F3905C002C6B190700469CA6 /* Signius.app */;
@@ -94,6 +127,10 @@
 			);
 			mainGroup = F3905BF72C6B190700469CA6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F3905C1C2C6B1CF300469CA6 /* XCRemoteSwiftPackageReference "ScrechKit" */,
+				F3905C1F2C6B1D1200469CA6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F3905C012C6B190700469CA6 /* Products */;
 			projectDirPath = "";
@@ -109,6 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3905C082C6B190700469CA6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3905C062C6B190700469CA6 /* ContentView.swift in Sources */,
+				F3905C152C6B193800469CA6 /* File.swift in Sources */,
+				F3905C042C6B190700469CA6 /* Signius.swift in Sources */,
+				F3905C172C6B194900469CA6 /* LoginView.swift in Sources */,
+				F3905C132C6B193300469CA6 /* AccountManager.swift in Sources */,
+				F3905C252C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,11 +291,11 @@
 				CODE_SIGN_ENTITLEMENTS = Signius/Signius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Signius/Preview Content\"";
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Signius/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -286,11 +330,11 @@
 				CODE_SIGN_ENTITLEMENTS = Signius/Signius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Signius/Preview Content\"";
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Signius/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -339,6 +383,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F3905C1C2C6B1CF300469CA6 /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/ScrechKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+		F3905C1F2C6B1D1200469CA6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F3905C1D2C6B1CF300469CA6 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3905C1C2C6B1CF300469CA6 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3905C202C6B1D1200469CA6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3905C1F2C6B1D1200469CA6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		F3905C222C6B1D1200469CA6 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3905C1F2C6B1D1200469CA6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F3905BF82C6B190700469CA6 /* Project object */;
 }
