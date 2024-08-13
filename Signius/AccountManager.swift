@@ -4,7 +4,7 @@ import os
 
 private let domain = "/"
 private let createUserAPIEndpoint = "http://\(domain)signup"
-private let signinUserAPIEndpoint = "http://\(domain)authenticate"
+private let signInUserAPIEndpoint = "http://\(domain)authenticate"
 private let registerBeginAPIEndpoint = "http://\(domain)makeCredential"
 private let signOutAPIEndpoint = "http://\(domain)signout"
 private let deleteCredentialAPIEndpoint = "http://\(domain)deleteCredential"
@@ -98,6 +98,51 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
         authController.performRequests()
     }
     
+    func getSigninResponse_Webauthn(anchor: ASPresentationAnchor) {
+        self.authenticationAnchor = anchor
+        
+        AF.request(signInUserAPIEndpoint, method: .get).responseData { responseData in
+            switch responseData.response?.statusCode {
+            case 200:
+                print("Successful")
+                
+                if let data = responseData.data {
+                    do {
+                        let signinDataResponseDecoded = try JSONDecoder().decode(SignInWebAuthnResponse.self, from: data)
+                        self.signinWithResponse(response: signinDataResponseDecoded)
+                    } catch {
+                        print("Error decoding SignInResponse")
+                    }
+                }
+                
+            case 401:
+                print("401 - Unauthorized user")
+                
+            case .some(_):
+                print("Unkown response: \(String(describing: responseData.response?.statusCode))")
+                
+            case .none:
+                print("Response not founda")
+            }
+        }
+    }
+    
+    func signinWithResponse(response: SignInWebAuthnResponse) {
+        let challengeResponseString = response.challenge
+        guard let challengeBase64URLDecodedData = challengeResponseString.base64URLDecodedData() else {
+            print("Error decoding challengeBase64URLDecodedData")
+            return
+        }
+        
+        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
+        let assertionRequest = publicKeyCredentialProvider.createCredentialAssertionRequest(challenge: challengeBase64URLDecodedData)
+        
+        let authController = ASAuthorizationController(authorizationRequests: [assertionRequest])
+        authController.delegate = self
+        authController.presentationContextProvider = self
+        authController.performRequests()
+    }
+    
     // Succeed
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         let logger = Logger()
@@ -106,26 +151,46 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
         case let credentialRegistration as ASAuthorizationPlatformPublicKeyCredentialRegistration:
             logger.log("A new passkey was registered: \(credentialRegistration)")
             
-            // Extract the credential ID and other necessary information
-            let credentialID = credentialRegistration.credentialID // This is the unique ID for the passkey
-            let rawAttestationObject = credentialRegistration.rawAttestationObject
-            let clientDataJSON = credentialRegistration.rawClientDataJSON
+            // This is the unique ID for the passkey
+            let credentialIDObjectBase64 = credentialRegistration.credentialID.base64EncodedString()
             
-            print(clientDataJSON)
-            // Prepare the data to send to the server
-            //            let registrationData: [String: Any] = [
-            //                "credentialID": credentialID,
-            //                "attestationObject": rawAttestationObject,
-            //                "clientDataJSON": clientDataJSON
-            //            ]
+            let rawIdObject = credentialRegistration.rawAttestationObject?.base64EncodedString()
+            let clientDataJSONBase64 = credentialRegistration.rawClientDataJSON.base64EncodedString()
             
-            sendAuthenticationDataToServer(
-                passkey: rawAttestationObject?.base64EncodedString(),
-                credentialId: credentialID.base64EncodedString()
-            )
+            guard let attestationObjectBase64 = credentialRegistration.rawAttestationObject?.base64EncodedString() else {
+                logger.log("Errpr getting attestationObjectBase64")
+                return
+            }
             
-            // Send the registration data to the server
-            //            sendRegistrationDataToServer(registrationData)
+            let responseObject: [String: Any] = [
+                "clientDataJSON": clientDataJSONBase64,
+                "attestationObject": attestationObjectBase64
+            ]
+            
+            let params: [String: Any] = [
+                "id": credentialRegistration,
+                "rawId": rawIdObject,
+                "response": responseObject,
+                "type": "public-key"
+            ]
+            
+            AF.request(registerBeginAPIEndpoint, method: .post, parameters: params, encoding: JSONEncoding.default).responseData { responseData in
+                switch responseData.response?.statusCode {
+                case 200:
+                    print("Successfully registered user on Wenauthn. Logging in user now")
+                    
+                case .none:
+                    print("Response not found")
+                    
+                case .some(_):
+                    print("Unknown response: \(String(describing: responseData.response?.statusCode))")
+                }
+            }
+            //            sendAuthenticationDataToServer(
+            //                passkey: rawAttestationObject?.base64EncodedString(),
+            //                credentialId: credentialID.base64EncodedString()
+            //            )
+            
             
             didFinishSignIn()
             
@@ -153,11 +218,12 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
             didFinishSignIn()
             
         default:
-            fatalError("Received unknown authorization type.")
+            fatalError("Received unknown authorization type")
         }
     }
     
     // Failed
+#warning("part 20 has more error handling")
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         let logger = Logger()
         
@@ -167,7 +233,7 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
         }
         
         if authorizationError.code == .canceled {
-            logger.log("Request canceled.")
+            logger.log("Request canceled")
             didCancelModalSheet()
         } else {
             logger.error("Error: \((error as NSError).userInfo)")
@@ -210,4 +276,70 @@ extension AccountManager {
             }
         }
     }
+    
+    func beginWebAuthnRegistration(response: BeginWebAuthnRegistrationResponse) {
+        let challengeResponseString = response.challenge
+        let usernameDecoded = response.user.name
+        let userIdDecoded = response.user.id
+        
+        let userID = Data(userIdDecoded.utf8)
+        
+        guard let challengeBase64EncodedData = challengeResponseString.base64URLDecodedData() else {
+            print("Error decoding challengeResponseString to Data")
+            return
+        }
+        
+        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
+        let registrationRequest = publicKeyCredentialProvider.createCredentialRegistrationRequest(
+            challenge: challengeBase64EncodedData,
+            name: usernameDecoded,
+            userID: userID
+        )
+        
+        let authController = ASAuthorizationController(authorizationRequests: [registrationRequest])
+        authController.delegate = self
+        authController.presentationContextProvider = self
+        authController.performRequests()
+    }
+}
+
+extension String {
+    func base64URLDecodedData() -> Data? {
+        var base64 = self
+            .replacingOccurrences(of: "-", with: "+")
+            .replacingOccurrences(of: "_", with: "/")
+        
+        let paddingLenght = (4 - base64.count % 4) % 4
+        base64 += String(repeating: "=", count: paddingLenght)
+        
+        return Data(base64Encoded: base64)
+    }
+}
+
+struct SignInWebAuthnResponse: Codable {
+    let challenge: String
+    let timeout: Int
+    let rpId: String
+    let allowCredentials: [PublicKeyCredentialDescriptor]?
+    let userVerification: UserVerificationRequirement?
+}
+
+struct PublicKeyCredentialDescriptor: Codable {
+    let type: String
+    let id: Int
+    let transports: [AuthenticatorTransport]
+}
+
+struct AuthenticatorTransport: Codable {
+    let usb: String
+    let nfc: String
+    let ble: String
+    let hybrid: String
+    let `internal`: String
+}
+
+enum UserVerificationRequirement: String, Codable {
+    case required
+    case preferred
+    case discouraged
 }
