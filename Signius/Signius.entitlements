@@ -9,6 +9,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>webcredentials:topscrech.dev?mode=developer</string>
+		<string>webcredentials:49.13.93.214?mode=developer</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>

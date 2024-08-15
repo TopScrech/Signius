@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F3905C042C6B190700469CA6 /* Signius.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C032C6B190700469CA6 /* Signius.swift */; };
-		F3905C062C6B190700469CA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C052C6B190700469CA6 /* ContentView.swift */; };
 		F3905C082C6B190700469CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3905C072C6B190700469CA6 /* Assets.xcassets */; };
 		F3905C132C6B193300469CA6 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C122C6B193300469CA6 /* AccountManager.swift */; };
-		F3905C152C6B193800469CA6 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C142C6B193800469CA6 /* File.swift */; };
 		F3905C172C6B194900469CA6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C162C6B194900469CA6 /* LoginView.swift */; };
 		F3905C1E2C6B1CF300469CA6 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3905C1D2C6B1CF300469CA6 /* ScrechKit */; };
 		F3905C252C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3905C242C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift */; };
@@ -34,11 +32,9 @@
 /* Begin PBXFileReference section */
 		F3905C002C6B190700469CA6 /* Signius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3905C032C6B190700469CA6 /* Signius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signius.swift; sourceTree = "<group>"; };
-		F3905C052C6B190700469CA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F3905C072C6B190700469CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3905C092C6B190700469CA6 /* Signius.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Signius.entitlements; sourceTree = "<group>"; };
 		F3905C122C6B193300469CA6 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
-		F3905C142C6B193800469CA6 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		F3905C162C6B194900469CA6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F3905C192C6B19BD00469CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F3905C242C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginWebAuthnRegistrationResponse.swift; sourceTree = "<group>"; };
@@ -83,8 +79,6 @@
 				F3905C092C6B190700469CA6 /* Signius.entitlements */,
 				F3905C122C6B193300469CA6 /* AccountManager.swift */,
 				F3905C242C6B1E3D00469CA6 /* BeginWebAuthnRegistrationResponse.swift */,
-				F3905C052C6B190700469CA6 /* ContentView.swift */,
-				F3905C142C6B193800469CA6 /* File.swift */,
 				F3905C162C6B194900469CA6 /* LoginView.swift */,
 			);
 			path = Signius;
@@ -177,8 +171,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3905C062C6B190700469CA6 /* ContentView.swift in Sources */,
-				F3905C152C6B193800469CA6 /* File.swift in Sources */,
 				F3905C042C6B190700469CA6 /* Signius.swift in Sources */,
 				F3905C172C6B194900469CA6 /* LoginView.swift in Sources */,
 				F3905C132C6B193300469CA6 /* AccountManager.swift in Sources */,

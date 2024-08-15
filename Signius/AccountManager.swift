@@ -2,7 +2,7 @@ import AuthenticationServices
 import Alamofire
 import os
 
-private let domain = "/"
+private let domain = "49.13.93.214:1897/"
 private let createUserAPIEndpoint = "http://\(domain)signup"
 private let signInUserAPIEndpoint = "http://\(domain)authenticate"
 private let registerBeginAPIEndpoint = "http://\(domain)makeCredential"
@@ -50,53 +50,53 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
         showSignInForm = true
     }
     
-    func signInWith(anchor: ASPresentationAnchor, preferImmediatelyAvailableCredentials: Bool) {
-        self.authenticationAnchor = anchor
-        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
-        let challenge = createChallenge()
-        
-        let assertionRequest = publicKeyCredentialProvider.createCredentialAssertionRequest(challenge: challenge)
-        let passwordCredentialProvider = ASAuthorizationPasswordProvider()
-        let passwordRequest = passwordCredentialProvider.createRequest()
-        
-        authController = ASAuthorizationController(authorizationRequests: [assertionRequest, passwordRequest])
-        authController?.delegate = self
-        authController?.presentationContextProvider = self
-        
-        if preferImmediatelyAvailableCredentials {
-            authController?.performRequests(options: .preferImmediatelyAvailableCredentials)
-        } else {
-            authController?.performRequests()
-        }
-    }
+    //    func signInWith(anchor: ASPresentationAnchor, preferImmediatelyAvailableCredentials: Bool) {
+    //        self.authenticationAnchor = anchor
+    //        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
+    //        let challenge = createChallenge()
+    //
+    //        let assertionRequest = publicKeyCredentialProvider.createCredentialAssertionRequest(challenge: challenge)
+    //        let passwordCredentialProvider = ASAuthorizationPasswordProvider()
+    //        let passwordRequest = passwordCredentialProvider.createRequest()
+    //
+    //        authController = ASAuthorizationController(authorizationRequests: [assertionRequest, passwordRequest])
+    //        authController?.delegate = self
+    //        authController?.presentationContextProvider = self
+    //
+    //        if preferImmediatelyAvailableCredentials {
+    //            authController?.performRequests(options: .preferImmediatelyAvailableCredentials)
+    //        } else {
+    //            authController?.performRequests()
+    //        }
+    //    }
+    //
+    //    func beginAutoFillAssistedPasskeySignIn(anchor: ASPresentationAnchor) {
+    //        self.authenticationAnchor = anchor
+    //
+    //        let challenge = createChallenge()
+    //        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
+    //        let assertionRequest = publicKeyCredentialProvider.createCredentialAssertionRequest(challenge: challenge)
+    //
+    //        let authController = ASAuthorizationController(authorizationRequests: [assertionRequest])
+    //        authController.delegate = self
+    //        authController.presentationContextProvider = self
+    //        authController.performAutoFillAssistedRequests()
+    //    }
     
-    func beginAutoFillAssistedPasskeySignIn(anchor: ASPresentationAnchor) {
-        self.authenticationAnchor = anchor
-        
-        let challenge = createChallenge()
-        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
-        let assertionRequest = publicKeyCredentialProvider.createCredentialAssertionRequest(challenge: challenge)
-        
-        let authController = ASAuthorizationController(authorizationRequests: [assertionRequest])
-        authController.delegate = self
-        authController.presentationContextProvider = self
-        authController.performAutoFillAssistedRequests()
-    }
-    
-    func signUpWith(userName: String, anchor: ASPresentationAnchor) {
-        self.authenticationAnchor = anchor
-        
-        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
-        let challenge = createChallenge()
-        let userID = Data(UUID().uuidString.utf8)
-        
-        let registrationRequest = publicKeyCredentialProvider.createCredentialRegistrationRequest(challenge: challenge, name: userName, userID: userID)
-        
-        let authController = ASAuthorizationController(authorizationRequests: [registrationRequest])
-        authController.delegate = self
-        authController.presentationContextProvider = self
-        authController.performRequests()
-    }
+    //    func signUpWith(userName: String, anchor: ASPresentationAnchor) {
+    //        self.authenticationAnchor = anchor
+    //
+    //        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
+    //        let challenge = createChallenge()
+    //        let userID = Data(UUID().uuidString.utf8)
+    //
+    //        let registrationRequest = publicKeyCredentialProvider.createCredentialRegistrationRequest(challenge: challenge, name: userName, userID: userID)
+    //
+    //        let authController = ASAuthorizationController(authorizationRequests: [registrationRequest])
+    //        authController.delegate = self
+    //        authController.presentationContextProvider = self
+    //        authController.performRequests()
+    //    }
     
     func getSigninResponse_Webauthn(anchor: ASPresentationAnchor) {
         self.authenticationAnchor = anchor
@@ -195,22 +195,43 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
             didFinishSignIn()
             
         case let credentialAssertion as ASAuthorizationPlatformPublicKeyCredentialAssertion:
-            logger.log("A passkey was used to sign in: \(credentialAssertion)")
+            logger.log("A passkey was used to sign in")
             
-            // Extract the data needed to authenticate with the server
-            let userID = credentialAssertion.userID // This is the ID of the user who owns the credential
-            let rawAuthenticatorData = credentialAssertion.rawAuthenticatorData
-            let signature = credentialAssertion.signature
-            let clientDataJSON = credentialAssertion.rawClientDataJSON
+            let credentialIDObjectBase64 = credentialAssertion.credentialID.base64EncodedString()
+            let rawIDObject = credentialAssertion.credentialID.base64EncodedString()
+            let clientDataJSONBase64 = credentialAssertion.rawClientDataJSON.base64EncodedString()
+            let authenticatorData = credentialAssertion.rawAuthenticatorData.base64EncodedString()
             
-            // Send authData to your server for verification
-            checkRequestServer(
-                credentialAssertion.credentialID.base64EncodedString(),
-                signature: signature,
-                clientDataJSON: clientDataJSON
-            )
+            let signature = credentialAssertion.signature.base64EncodedString()
+            let userHandle = credentialAssertion.userID.base64EncodedString()
             
-            didFinishSignIn()
+            let responseObject: [String: Any] = [
+                "clientDataJSON": clientDataJSONBase64,
+                "authenticatorData": authenticatorData,
+                "signature": signature,
+                "userHandle": userHandle
+            ]
+            
+            let parameters: [String: Any] = [
+                "id": credentialIDObjectBase64,
+                "rawId": rawIDObject,
+                "response": responseObject,
+                "type": "public-key"
+            ]
+            
+            AF.request(signInUserAPIEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { responseData in
+                switch responseData.response?.statusCode {
+                case 200:
+                    print("Successfully signed in user usig Passkeys")
+                    self.didFinishSignIn()
+                    
+                case .none:
+                    print("Response not found")
+                    
+                case .some(_):
+                    print("Unknown response found: \(String(describing: responseData.response?.statusCode))")
+                }
+            }
             
             
         case let passwordCredential as ASPasswordCredential:
@@ -219,6 +240,40 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
             
         default:
             fatalError("Received unknown authorization type")
+        }
+    }
+    
+    func signOutWebauthnUser(completionHandler: @escaping (Bool) -> Void) {
+        AF.request(signOutAPIEndpoint, method: .get).responseData { responseData in
+            switch responseData.response?.statusCode {
+            case 200:
+                print("Successfully signed out user")
+                completionHandler(true)
+                
+            case .none:
+                print("Response not found")
+                completionHandler(false)
+                
+            case .some(_):
+                print("Unknown response: \(String(describing: responseData.response?.statusCode))")
+            }
+        }
+    }
+    
+    func deleteUserAccount(completionHandler: @escaping (Bool) -> Void) {
+        AF.request(deleteCredentialAPIEndpoint, method: .delete).responseData { responseData in
+            switch responseData.response?.statusCode {
+            case 204:
+                print("Successfully deleted user account")
+                completionHandler(true)
+                
+            case .none:
+                print("Response not found")
+                completionHandler(false)
+                
+            case .some(_):
+                print("Unknown response: \(String(describing: responseData.response?.statusCode))")
+            }
         }
     }
     
@@ -255,10 +310,12 @@ extension AccountManager {
             switch responseData.response?.statusCode {
             case 200:
                 print("Successful")
+                
                 AF.request(registerBeginAPIEndpoint, method: .get).responseData { responseData in
                     if let data = responseData.data {
                         do {
                             let registerDataResponseDecoded = try JSONDecoder().decode(BeginWebAuthnRegistrationResponse.self, from: data)
+                            self.beginWebAuthnRegistration(response: registerDataResponseDecoded)
                         } catch {
                             print("Error decoding BeginWebAuthnRegistrationResponse")
                         }
