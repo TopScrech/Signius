@@ -2,32 +2,30 @@ import AuthenticationServices
 import Alamofire
 import os
 
-private let domain = "49.13.93.214:1897/"
-private let createUserAPIEndpoint = "http://\(domain)signup"
-private let signInUserAPIEndpoint = "http://\(domain)authenticate"
-private let registerBeginAPIEndpoint = "http://\(domain)makeCredential"
-private let signOutAPIEndpoint = "http://\(domain)signout"
-private let deleteCredentialAPIEndpoint = "http://\(domain)deleteCredential"
+private let domain = "bisquit-id.topscrech.dev/"
+private let createUserAPIEndpoint = "https://\(domain)signup"
+private let signInUserAPIEndpoint = "https://\(domain)authenticate"
+private let registerBeginAPIEndpoint = "https://\(domain)makeCredential"
+private let signOutAPIEndpoint = "https://\(domain)signout"
+private let deleteCredentialAPIEndpoint = "https://\(domain)deleteCredential"
 
-func createChallenge(length: Int = 32) -> Data {
-    // Ensure the length is reasonable
-    guard length > 0 else {
-        fatalError("Challenge length must be greater than zero.")
-    }
-    
-    // Generate random data
-    var challenge = Data(count: length)
-    _ = challenge.withUnsafeMutableBytes { bytes in
-        // Fill the data with random bytes
-        SecRandomCopyBytes(kSecRandomDefault, length, bytes.baseAddress!)
-    }
-    
-    return challenge
-}
+//func createChallenge(length: Int = 32) -> Data {
+//    // Ensure the length is reasonable
+//    guard length > 0 else {
+//        fatalError("Challenge length must be greater than zero")
+//    }
+//    
+//    // Generate random data
+//    var challenge = Data(count: length)
+//    _ = challenge.withUnsafeMutableBytes { bytes in
+//        // Fill the data with random bytes
+//        SecRandomCopyBytes(kSecRandomDefault, length, bytes.baseAddress!)
+//    }
+//    
+//    return challenge
+//}
 
 class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate, ObservableObject {
-    let domain = "topscrech.dev"
-    
     @Published var isSignedIn = false
     @Published var showSignInForm = false
     
@@ -122,7 +120,7 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
                 print("Unkown response: \(String(describing: responseData.response?.statusCode))")
                 
             case .none:
-                print("Response not founda")
+                print("Response not found \(#function)")
             }
         }
     }
@@ -180,7 +178,7 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
                     print("Successfully registered user on Wenauthn. Logging in user now")
                     
                 case .none:
-                    print("Response not found")
+                    print("Response not found \(#function)")
                     
                 case .some(_):
                     print("Unknown response: \(String(describing: responseData.response?.statusCode))")
@@ -226,7 +224,7 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
                     self.didFinishSignIn()
                     
                 case .none:
-                    print("Response not found")
+                    print("Response not found \(#function)")
                     
                 case .some(_):
                     print("Unknown response found: \(String(describing: responseData.response?.statusCode))")
@@ -251,7 +249,7 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
                 completionHandler(true)
                 
             case .none:
-                print("Response not found")
+                print("Response not found \(#function)")
                 completionHandler(false)
                 
             case .some(_):
@@ -268,7 +266,7 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
                 completionHandler(true)
                 
             case .none:
-                print("Response not found")
+                print("Response not found \(#function)")
                 completionHandler(false)
                 
             case .some(_):
