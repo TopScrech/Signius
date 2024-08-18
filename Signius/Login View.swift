@@ -14,9 +14,6 @@ struct LoginView: View {
                 accountManager.cancelSignIn()
             }
             
-            //            if showSignInForm {
-            //                signInForm
-            //            } else {
             Button("Create Account") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
@@ -26,7 +23,6 @@ struct LoginView: View {
                     )
                 }
             }
-            //            }
             
             Button("Log in") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -47,15 +43,6 @@ struct LoginView: View {
                 }
             }
         }
-        //        .task {
-        //            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-        //               let window = windowScene.windows.first {
-        //                accountManager.signInWith(
-        //                    anchor: window,
-        //                    preferImmediatelyAvailableCredentials: true
-        //                )
-        //            }
-        //        }
         .onReceive(NotificationCenter.default.publisher(for: .UserSignedIn)) { _ in
             didFinishSignIn()
         }
@@ -63,21 +50,6 @@ struct LoginView: View {
             showSignInForm = true
         }
     }
-    
-    //    private var signInForm: some View {
-    //        VStack {
-    //            TextField("User Name", text: $userName)
-    //                .textFieldStyle(.roundedBorder)
-    //
-    //            Button("Sign In") {
-    //                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-    //                   let window = windowScene.windows.first {
-    //                    accountManager.beginAutoFillAssistedPasskeySignIn(anchor: window)
-    //                }
-    //            }
-    //        }
-    //        .padding()
-    //    }
     
     func didFinishSignIn() {
         accountManager.isSignedIn = true
