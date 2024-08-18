@@ -138,7 +138,7 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
         let authController = ASAuthorizationController(authorizationRequests: [assertionRequest])
         authController.delegate = self
         authController.presentationContextProvider = self
-        authController.performRequests()
+        authController.performRequests(options: .preferImmediatelyAvailableCredentials)
     }
     
     // Succeed
@@ -152,8 +152,8 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
             // This is the unique ID for the passkey
             let credentialIDObjectBase64 = credentialRegistration.credentialID.base64EncodedString()
             
-            let rawIdObject = credentialRegistration.rawAttestationObject?.base64EncodedString()
-            let clientDataJSONBase64 = credentialRegistration.rawClientDataJSON.base64EncodedString()
+            let rawIdObject = credentialRegistration.credentialID.base64EncodedString()
+            let clientDataJsonBase64 = credentialRegistration.rawClientDataJSON.base64EncodedString()
             
             guard let attestationObjectBase64 = credentialRegistration.rawAttestationObject?.base64EncodedString() else {
                 logger.log("Errpr getting attestationObjectBase64")
@@ -161,16 +161,18 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
             }
             
             let responseObject: [String: Any] = [
-                "clientDataJSON": clientDataJSONBase64,
+                "clientDataJSON": clientDataJsonBase64,
                 "attestationObject": attestationObjectBase64
             ]
             
             let params: [String: Any] = [
-                "id": credentialRegistration,
+                "id": credentialIDObjectBase64,
                 "rawId": rawIdObject,
                 "response": responseObject,
                 "type": "public-key"
             ]
+            
+            print(params)
             
             AF.request(registerBeginAPIEndpoint, method: .post, parameters: params, encoding: JSONEncoding.default).responseData { responseData in
                 switch responseData.response?.statusCode {
@@ -333,13 +335,13 @@ extension AccountManager {
     }
     
     func beginWebAuthnRegistration(response: BeginWebAuthnRegistrationResponse) {
-        let challengeResponseString = response.challenge
+        let challengeResponse = response.challenge
         let usernameDecoded = response.user.name
         let userIdDecoded = response.user.id
         
-        let userID = Data(userIdDecoded.utf8)
+        let userId = Data(userIdDecoded.utf8)
         
-        guard let challengeBase64EncodedData = challengeResponseString.base64URLDecodedData() else {
+        guard let challengeBase64EncodedData = challengeResponse.base64URLDecodedData() else {
             print("Error decoding challengeResponseString to Data")
             return
         }
@@ -348,13 +350,13 @@ extension AccountManager {
         let registrationRequest = publicKeyCredentialProvider.createCredentialRegistrationRequest(
             challenge: challengeBase64EncodedData,
             name: usernameDecoded,
-            userID: userID
+            userID: userId
         )
         
         let authController = ASAuthorizationController(authorizationRequests: [registrationRequest])
         authController.delegate = self
         authController.presentationContextProvider = self
-        authController.performRequests()
+        authController.performRequests(options: .preferImmediatelyAvailableCredentials)
     }
 }
 

@@ -1,5 +1,3 @@
-import Foundation
-
 struct BeginWebAuthnRegistrationResponse: Codable {
     let rp: Rp
     let timeout: Int
