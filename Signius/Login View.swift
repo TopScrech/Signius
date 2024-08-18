@@ -43,10 +43,10 @@ struct LoginView: View {
                 }
             }
         }
-        .onReceive(NotificationCenter.default.publisher(for: .UserSignedIn)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .userSignedIn)) { _ in
             didFinishSignIn()
         }
-        .onReceive(NotificationCenter.default.publisher(for: .ModalSignInSheetCanceled)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .modalSignInSheetCanceled)) { _ in
             showSignInForm = true
         }
     }

@@ -17,6 +17,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 extension Notification.Name {
-    static let UserSignedIn = Notification.Name("UserSignedInNotification")
-    static let ModalSignInSheetCanceled = Notification.Name("ModalSignInSheetCanceledNotification")
+    static let userSignedIn = Notification.Name("UserSignedInNotification")
+    static let modalSignInSheetCanceled = Notification.Name("ModalSignInSheetCanceledNotification")
 }
