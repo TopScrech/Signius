@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(AccountManager.self) private var vm
+    @Environment(AuthVM.self) private var vm
     
     @State private var username = ""
     @State private var showSignInForm = false
@@ -9,6 +9,7 @@ struct LoginView: View {
     var body: some View {
         VStack(spacing: 20) {
             TextField("Username", text: $username)
+                .autocorrectionDisabled()
             
             Button("Cancel") {
                 vm.cancelSignIn()
@@ -17,29 +18,26 @@ struct LoginView: View {
             Button("Create Account") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
-                    vm.registerUserCredential_WebAuthn(
-                        anchor: window,
-                        username: username
-                    )
+                    vm.registerUserCredential_WebAuthn(window, username: username)
                 }
             }
             
             Button("Log in") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
-                    vm.getSigninResponse_Webauthn(anchor: window)
+                    vm.getSigninResponse_Webauthn(window)
                 }
             }
             
             Button("Sign out") {
-                vm.signOutWebauthnUser { isSuccess in
-                    print("Sign out: \(isSuccess)")
+                vm.signOutWebauthnUser { success in
+                    print("Sign out: \(success)")
                 }
             }
             
             Button("Delete user") {
-                vm.deleteUserAccount { isDeleted in
-                    print("Deleted user: \(isDeleted)")
+                vm.deleteUserAccount { success in
+                    print("Deleted user: \(success)")
                 }
             }
         }
@@ -51,7 +49,7 @@ struct LoginView: View {
         }
     }
     
-    func didFinishSignIn() {
+    private func didFinishSignIn() {
         vm.isSignedIn = true
     }
 }

@@ -10,7 +10,7 @@ private let signOutAPIEndpoint = "https://\(domain)signout"
 private let deleteCredentialAPIEndpoint = "https://\(domain)deleteCredential"
 
 @Observable
-final class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
+final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
     var isSignedIn = false
     var showSignInForm = false
     
@@ -33,7 +33,7 @@ final class AccountManager: NSObject, ASAuthorizationControllerPresentationConte
         showSignInForm = true
     }
     
-    func getSigninResponse_Webauthn(anchor: ASPresentationAnchor) {
+    func getSigninResponse_Webauthn(_ anchor: ASPresentationAnchor) {
         self.authenticationAnchor = anchor
         
         AF.request(signInUserAPIEndpoint, method: .get).responseData { responseData in
@@ -235,8 +235,8 @@ final class AccountManager: NSObject, ASAuthorizationControllerPresentationConte
     }
 }
 
-extension AccountManager {
-    func registerUserCredential_WebAuthn(anchor: ASPresentationAnchor, username: String) {
+extension AuthVM {
+    func registerUserCredential_WebAuthn(_ anchor: ASPresentationAnchor, username: String) {
         self.authenticationAnchor = anchor
         
         let params: Parameters = [
