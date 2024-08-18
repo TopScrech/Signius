@@ -2,31 +2,18 @@ import SwiftUI
 
 @main
 struct SigniusApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var vm = AccountManager()
     
     var body: some Scene {
         WindowGroup {
             LoginView()
+                .environmentObject(vm)
         }
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     let accountManager = AccountManager()
-}
-
-struct UserHomeView: View {
-    @EnvironmentObject var accountManager: AccountManager
-    
-    var body: some View {
-        VStack {
-            Text("Welcome!")
-            
-            Button("Sign Out") {
-                accountManager.isSignedIn = false
-            }
-        }
-    }
 }
 
 extension Notification.Name {

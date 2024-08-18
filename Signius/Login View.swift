@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var accountManager = AccountManager()
+    @EnvironmentObject private var accountManager: AccountManager
     
-    @State private var userName = ""
+    @State private var username = ""
     @State private var showSignInForm = false
     
     var body: some View {
         VStack(spacing: 20) {
-            TextField("Username", text: $userName)
+            TextField("Username", text: $username)
             
             Button("Cancel") {
                 accountManager.cancelSignIn()
@@ -19,10 +19,10 @@ struct LoginView: View {
             //            } else {
             Button("Create Account") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                    let window = windowScene.windows.first {
+                   let window = windowScene.windows.first {
                     accountManager.registerUserCredential_WebAuthn(
                         anchor: window,
-                        username: userName
+                        username: username
                     )
                 }
             }

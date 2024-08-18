@@ -1,3 +1,5 @@
+// MARK: - Sing up
+
 struct BeginWebAuthnRegistrationResponse: Codable {
     let rp: Rp
     let timeout: Int
@@ -18,4 +20,34 @@ struct Rp: Codable {
 
 struct User: Codable {
     let id, name, displayName: String
+}
+
+// MARK: - Sing in
+
+struct SignInWebAuthnResponse: Codable {
+    let challenge: String
+    let timeout: Int
+    let rpId: String
+    let allowCredentials: [PublicKeyCredentialDescriptor]?
+    let userVerification: UserVerificationRequirement?
+}
+
+struct PublicKeyCredentialDescriptor: Codable {
+    let type: String
+    let id: Int
+    let transports: [AuthenticatorTransport]
+}
+
+struct AuthenticatorTransport: Codable {
+    let usb: String
+    let nfc: String
+    let ble: String
+    let hybrid: String
+    let `internal`: String
+}
+
+enum UserVerificationRequirement: String, Codable {
+    case required
+    case preferred
+    case discouraged
 }

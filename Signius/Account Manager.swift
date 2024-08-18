@@ -9,22 +9,6 @@ private let registerBeginAPIEndpoint = "https://\(domain)makeCredential"
 private let signOutAPIEndpoint = "https://\(domain)signout"
 private let deleteCredentialAPIEndpoint = "https://\(domain)deleteCredential"
 
-//func createChallenge(length: Int = 32) -> Data {
-//    // Ensure the length is reasonable
-//    guard length > 0 else {
-//        fatalError("Challenge length must be greater than zero")
-//    }
-//    
-//    // Generate random data
-//    var challenge = Data(count: length)
-//    _ = challenge.withUnsafeMutableBytes { bytes in
-//        // Fill the data with random bytes
-//        SecRandomCopyBytes(kSecRandomDefault, length, bytes.baseAddress!)
-//    }
-//    
-//    return challenge
-//}
-
 class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate, ObservableObject {
     @Published var isSignedIn = false
     @Published var showSignInForm = false
@@ -47,54 +31,6 @@ class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProv
     func didCancelModalSheet() {
         showSignInForm = true
     }
-    
-    //    func signInWith(anchor: ASPresentationAnchor, preferImmediatelyAvailableCredentials: Bool) {
-    //        self.authenticationAnchor = anchor
-    //        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
-    //        let challenge = createChallenge()
-    //
-    //        let assertionRequest = publicKeyCredentialProvider.createCredentialAssertionRequest(challenge: challenge)
-    //        let passwordCredentialProvider = ASAuthorizationPasswordProvider()
-    //        let passwordRequest = passwordCredentialProvider.createRequest()
-    //
-    //        authController = ASAuthorizationController(authorizationRequests: [assertionRequest, passwordRequest])
-    //        authController?.delegate = self
-    //        authController?.presentationContextProvider = self
-    //
-    //        if preferImmediatelyAvailableCredentials {
-    //            authController?.performRequests(options: .preferImmediatelyAvailableCredentials)
-    //        } else {
-    //            authController?.performRequests()
-    //        }
-    //    }
-    //
-    //    func beginAutoFillAssistedPasskeySignIn(anchor: ASPresentationAnchor) {
-    //        self.authenticationAnchor = anchor
-    //
-    //        let challenge = createChallenge()
-    //        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
-    //        let assertionRequest = publicKeyCredentialProvider.createCredentialAssertionRequest(challenge: challenge)
-    //
-    //        let authController = ASAuthorizationController(authorizationRequests: [assertionRequest])
-    //        authController.delegate = self
-    //        authController.presentationContextProvider = self
-    //        authController.performAutoFillAssistedRequests()
-    //    }
-    
-    //    func signUpWith(userName: String, anchor: ASPresentationAnchor) {
-    //        self.authenticationAnchor = anchor
-    //
-    //        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
-    //        let challenge = createChallenge()
-    //        let userID = Data(UUID().uuidString.utf8)
-    //
-    //        let registrationRequest = publicKeyCredentialProvider.createCredentialRegistrationRequest(challenge: challenge, name: userName, userID: userID)
-    //
-    //        let authController = ASAuthorizationController(authorizationRequests: [registrationRequest])
-    //        authController.delegate = self
-    //        authController.presentationContextProvider = self
-    //        authController.performRequests()
-    //    }
     
     func getSigninResponse_Webauthn(anchor: ASPresentationAnchor) {
         self.authenticationAnchor = anchor
@@ -371,32 +307,4 @@ extension String {
         
         return Data(base64Encoded: base64)
     }
-}
-
-struct SignInWebAuthnResponse: Codable {
-    let challenge: String
-    let timeout: Int
-    let rpId: String
-    let allowCredentials: [PublicKeyCredentialDescriptor]?
-    let userVerification: UserVerificationRequirement?
-}
-
-struct PublicKeyCredentialDescriptor: Codable {
-    let type: String
-    let id: Int
-    let transports: [AuthenticatorTransport]
-}
-
-struct AuthenticatorTransport: Codable {
-    let usb: String
-    let nfc: String
-    let ble: String
-    let hybrid: String
-    let `internal`: String
-}
-
-enum UserVerificationRequirement: String, Codable {
-    case required
-    case preferred
-    case discouraged
 }
