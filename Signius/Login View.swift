@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject private var accountManager: AccountManager
+    @Environment(AccountManager.self) private var vm
     
     @State private var username = ""
     @State private var showSignInForm = false
@@ -11,13 +11,13 @@ struct LoginView: View {
             TextField("Username", text: $username)
             
             Button("Cancel") {
-                accountManager.cancelSignIn()
+                vm.cancelSignIn()
             }
             
             Button("Create Account") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
-                    accountManager.registerUserCredential_WebAuthn(
+                    vm.registerUserCredential_WebAuthn(
                         anchor: window,
                         username: username
                     )
@@ -27,18 +27,18 @@ struct LoginView: View {
             Button("Log in") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
-                    accountManager.getSigninResponse_Webauthn(anchor: window)
+                    vm.getSigninResponse_Webauthn(anchor: window)
                 }
             }
             
             Button("Sign out") {
-                accountManager.signOutWebauthnUser { isSuccess in
+                vm.signOutWebauthnUser { isSuccess in
                     print("Sign out: \(isSuccess)")
                 }
             }
             
             Button("Delete user") {
-                accountManager.deleteUserAccount { isDeleted in
+                vm.deleteUserAccount { isDeleted in
                     print("Deleted user: \(isDeleted)")
                 }
             }
@@ -52,6 +52,6 @@ struct LoginView: View {
     }
     
     func didFinishSignIn() {
-        accountManager.isSignedIn = true
+        vm.isSignedIn = true
     }
 }

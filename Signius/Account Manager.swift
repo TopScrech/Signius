@@ -9,9 +9,10 @@ private let registerBeginAPIEndpoint = "https://\(domain)makeCredential"
 private let signOutAPIEndpoint = "https://\(domain)signout"
 private let deleteCredentialAPIEndpoint = "https://\(domain)deleteCredential"
 
-class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate, ObservableObject {
-    @Published var isSignedIn = false
-    @Published var showSignInForm = false
+@Observable
+final class AccountManager: NSObject, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
+    var isSignedIn = false
+    var showSignInForm = false
     
     var authenticationAnchor: ASPresentationAnchor?
     private var authController: ASAuthorizationController?

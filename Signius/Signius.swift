@@ -2,12 +2,12 @@ import SwiftUI
 
 @main
 struct SigniusApp: App {
-    @StateObject private var vm = AccountManager()
+    @State private var vm = AccountManager()
     
     var body: some Scene {
         WindowGroup {
             LoginView()
-                .environmentObject(vm)
+                .environment(vm)
         }
     }
 }
