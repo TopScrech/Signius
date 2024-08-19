@@ -16,6 +16,7 @@
 		F3905C282C6B21A200469CA6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F3905C272C6B21A200469CA6 /* Alamofire */; };
 		F3B98E962C729D850006021E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B98E952C729D850006021E /* Notifications.swift */; };
 		F3B98E982C729DA90006021E /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B98E972C729DA90006021E /* App Container.swift */; };
+		F3B98E9A2C729FA20006021E /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B98E992C729FA20006021E /* Account View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,7 @@
 		F3905C242C6B1E3D00469CA6 /* WebAuthn Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebAuthn Model.swift"; sourceTree = "<group>"; };
 		F3B98E952C729D850006021E /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		F3B98E972C729DA90006021E /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
+		F3B98E992C729FA20006021E /* Account View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				F3905C092C6B190700469CA6 /* Signius.entitlements */,
 				F3905C122C6B193300469CA6 /* Account Manager.swift */,
 				F3905C162C6B194900469CA6 /* Login View.swift */,
+				F3B98E992C729FA20006021E /* Account View.swift */,
 				F3905C242C6B1E3D00469CA6 /* WebAuthn Model.swift */,
 				F3B98E952C729D850006021E /* Notifications.swift */,
 			);
@@ -179,6 +182,7 @@
 				F3B98E962C729D850006021E /* Notifications.swift in Sources */,
 				F3905C042C6B190700469CA6 /* Signius.swift in Sources */,
 				F3905C172C6B194900469CA6 /* Login View.swift in Sources */,
+				F3B98E9A2C729FA20006021E /* Account View.swift in Sources */,
 				F3905C132C6B193300469CA6 /* Account Manager.swift in Sources */,
 				F3B98E982C729DA90006021E /* App Container.swift in Sources */,
 				F3905C252C6B1E3D00469CA6 /* WebAuthn Model.swift in Sources */,

@@ -5,8 +5,12 @@ struct AppContainer: View {
     
     var body: some View {
         NavigationStack {
-            LoginView()
-                .environment(vm)
+            if vm.isSignedIn {
+                AccountView()
+            } else {
+                LoginView()
+            }
         }
+        .environment(vm)
     }
 }

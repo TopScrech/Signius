@@ -16,11 +16,7 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
     
     var authenticationAnchor: ASPresentationAnchor?
     private var authController: ASAuthorizationController?
-    
-    func cancelSignIn() {
-        authController?.cancel()
-    }
-    
+        
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         authenticationAnchor!
     }

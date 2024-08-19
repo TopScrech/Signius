@@ -10,10 +10,7 @@ struct LoginView: View {
         VStack(spacing: 20) {
             TextField("Username", text: $username)
                 .autocorrectionDisabled()
-            
-            Button("Cancel") {
-                vm.cancelSignIn()
-            }
+                .multilineTextAlignment(.center)
             
             Button("Create Account") {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -28,18 +25,6 @@ struct LoginView: View {
                     vm.getSigninResponse_Webauthn(window)
                 }
             }
-            
-            Button("Sign out") {
-                vm.signOutWebauthnUser { success in
-                    print("Sign out: \(success)")
-                }
-            }
-            
-            Button("Delete user") {
-                vm.deleteUserAccount { success in
-                    print("Deleted user: \(success)")
-                }
-            }
         }
         .onReceive(NotificationCenter.default.publisher(for: .userSignedIn)) { _ in
             didFinishSignIn()
@@ -52,4 +37,9 @@ struct LoginView: View {
     private func didFinishSignIn() {
         vm.isSignedIn = true
     }
+}
+
+#Preview {
+    LoginView()
+        .environment(AuthVM())
 }
