@@ -5,16 +5,12 @@ struct AccountView: View {
     
     var body: some View {
         Button("Sign out") {
-            vm.signOutWebauthnUser { success in
-                print("Sign out: \(success)")
-            }
+            vm.signOutWebauthnUser()
         }
         .buttonStyle(.red)
         
         Button("Delete user") {
-            vm.deleteUserAccount { success in
-                print("Deleted user: \(success)")
-            }
+            vm.deleteUserAccount()
         }
         .buttonStyle(.black)
     }

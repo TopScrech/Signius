@@ -16,7 +16,7 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
     
     var authenticationAnchor: ASPresentationAnchor?
     private var authController: ASAuthorizationController?
-        
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         authenticationAnchor!
     }
@@ -176,16 +176,15 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
         }
     }
     
-    func signOutWebauthnUser(completionHandler: @escaping (Bool) -> Void) {
+    func signOutWebauthnUser() {
         AF.request(signOutAPIEndpoint, method: .get).responseData { responseData in
             switch responseData.response?.statusCode {
             case 200:
                 print("Successfully signed out user")
-                completionHandler(true)
+                self.isSignedIn = false
                 
             case .none:
                 print("Response not found \(#function)")
-                completionHandler(false)
                 
             case .some(_):
                 print("Unknown response: \(String(describing: responseData.response?.statusCode))")
@@ -193,16 +192,15 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
         }
     }
     
-    func deleteUserAccount(completionHandler: @escaping (Bool) -> Void) {
+    func deleteUserAccount() {
         AF.request(deleteCredentialAPIEndpoint, method: .delete).responseData { responseData in
             switch responseData.response?.statusCode {
             case 204:
                 print("Successfully deleted user account")
-                completionHandler(true)
+                self.isSignedIn = false
                 
             case .none:
                 print("Response not found \(#function)")
-                completionHandler(false)
                 
             case .some(_):
                 print("Unknown response: \(String(describing: responseData.response?.statusCode))")
