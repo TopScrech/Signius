@@ -83,9 +83,9 @@
 			children = (
 				F3905C192C6B19BD00469CA6 /* Info.plist */,
 				F3905C032C6B190700469CA6 /* Signius.swift */,
-				F3B98E972C729DA90006021E /* App Container.swift */,
 				F3905C072C6B190700469CA6 /* Assets.xcassets */,
 				F3905C092C6B190700469CA6 /* Signius.entitlements */,
+				F3B98E972C729DA90006021E /* App Container.swift */,
 				F3905C122C6B193300469CA6 /* Account Manager.swift */,
 				F3905C162C6B194900469CA6 /* Login View.swift */,
 				F39DB7932C73456100CF74F8 /* Button Style.swift */,
