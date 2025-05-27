@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,13 +23,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		F3DCE4D72C6B932C00B6E5FB /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolder = Frameworks;
 			files = (
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -40,7 +38,7 @@
 		F3905C092C6B190700469CA6 /* Signius.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Signius.entitlements; sourceTree = "<group>"; };
 		F3905C122C6B193300469CA6 /* Account Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Manager.swift"; sourceTree = "<group>"; };
 		F3905C162C6B194900469CA6 /* Login View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login View.swift"; sourceTree = "<group>"; };
-		F3905C192C6B19BD00469CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F3905C192C6B19BD00469CA6 /* Signius.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Signius.plist; sourceTree = "<group>"; };
 		F3905C242C6B1E3D00469CA6 /* WebAuthn Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebAuthn Model.swift"; sourceTree = "<group>"; };
 		F39DB7932C73456100CF74F8 /* Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button Style.swift"; sourceTree = "<group>"; };
 		F3B98E952C729D850006021E /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -51,12 +49,10 @@
 /* Begin PBXFrameworksBuildPhase section */
 		F3905BFD2C6B190700469CA6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3905C1E2C6B1CF300469CA6 /* ScrechKit in Frameworks */,
 				F3905C282C6B21A200469CA6 /* Alamofire in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -81,10 +77,10 @@
 		F3905C182C6B195700469CA6 /* Signius */ = {
 			isa = PBXGroup;
 			children = (
-				F3905C192C6B19BD00469CA6 /* Info.plist */,
 				F3905C032C6B190700469CA6 /* Signius.swift */,
-				F3905C072C6B190700469CA6 /* Assets.xcassets */,
+				F3905C192C6B19BD00469CA6 /* Signius.plist */,
 				F3905C092C6B190700469CA6 /* Signius.entitlements */,
+				F3905C072C6B190700469CA6 /* Assets.xcassets */,
 				F3B98E972C729DA90006021E /* App Container.swift */,
 				F3905C122C6B193300469CA6 /* Account Manager.swift */,
 				F3905C162C6B194900469CA6 /* Login View.swift */,
@@ -117,8 +113,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = Signius;
 			packageProductDependencies = (
 				F3905C1D2C6B1CF300469CA6 /* ScrechKit */,
@@ -136,7 +130,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1610;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					F3905BFF2C6B190700469CA6 = {
 						CreatedOnToolsVersion = 16.1;
@@ -144,7 +138,6 @@
 				};
 			};
 			buildConfigurationList = F3905BFB2C6B190700469CA6 /* Build configuration list for PBXProject "Signius" */;
-			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -157,6 +150,7 @@
 				F3905C1C2C6B1CF300469CA6 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 				F3905C262C6B21A200469CA6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
+			preferredProjectObjectVersion = 90;
 			productRefGroup = F3905C012C6B190700469CA6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -169,18 +163,15 @@
 /* Begin PBXResourcesBuildPhase section */
 		F3905BFE2C6B190700469CA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3905C082C6B190700469CA6 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3905BFC2C6B190700469CA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3B98E962C729D850006021E /* Notifications.swift in Sources */,
 				F3905C042C6B190700469CA6 /* Signius.swift in Sources */,
@@ -191,12 +182,11 @@
 				F3B98E982C729DA90006021E /* App Container.swift in Sources */,
 				F3905C252C6B1E3D00469CA6 /* WebAuthn Model.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		F3905C0D2C6B190700469CA6 /* Debug */ = {
+		F3905C0D2C6B190700469CA6 /* Debug configuration for PBXProject "Signius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -230,7 +220,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -257,7 +249,7 @@
 			};
 			name = Debug;
 		};
-		F3905C0E2C6B190700469CA6 /* Release */ = {
+		F3905C0E2C6B190700469CA6 /* Release configuration for PBXProject "Signius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -291,7 +283,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -310,7 +304,7 @@
 			};
 			name = Release;
 		};
-		F3905C102C6B190700469CA6 /* Debug */ = {
+		F3905C102C6B190700469CA6 /* Debug configuration for PBXNativeTarget "Signius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -318,11 +312,11 @@
 				CODE_SIGN_ENTITLEMENTS = Signius/Signius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8FQUA2F388;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Signius/Info.plist;
+				INFOPLIST_FILE = Signius/Signius.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Signius;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -350,7 +344,7 @@
 			};
 			name = Debug;
 		};
-		F3905C112C6B190700469CA6 /* Release */ = {
+		F3905C112C6B190700469CA6 /* Release configuration for PBXNativeTarget "Signius" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -358,11 +352,11 @@
 				CODE_SIGN_ENTITLEMENTS = Signius/Signius.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8FQUA2F388;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Signius/Info.plist;
+				INFOPLIST_FILE = Signius/Signius.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Signius;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -396,19 +390,17 @@
 		F3905BFB2C6B190700469CA6 /* Build configuration list for PBXProject "Signius" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3905C0D2C6B190700469CA6 /* Debug */,
-				F3905C0E2C6B190700469CA6 /* Release */,
+				F3905C0D2C6B190700469CA6 /* Debug configuration for PBXProject "Signius" */,
+				F3905C0E2C6B190700469CA6 /* Release configuration for PBXProject "Signius" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3905C0F2C6B190700469CA6 /* Build configuration list for PBXNativeTarget "Signius" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3905C102C6B190700469CA6 /* Debug */,
-				F3905C112C6B190700469CA6 /* Release */,
+				F3905C102C6B190700469CA6 /* Debug configuration for PBXNativeTarget "Signius" */,
+				F3905C112C6B190700469CA6 /* Release configuration for PBXNativeTarget "Signius" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
@@ -418,8 +410,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/ScrechKit";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F3905C262C6B21A200469CA6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {

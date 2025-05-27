@@ -8,7 +8,7 @@ struct ButtonStyleModifier: ViewModifier {
             .foregroundStyle(.white)
             .fontWeight(.semibold)
             .frame(maxWidth: .infinity, maxHeight: 50)
-            .background(color.gradient, in: RoundedRectangle(cornerRadius: 16))
+            .background(color.gradient, in: .rect(cornerRadius: 16))
             .padding(.horizontal)
     }
 }

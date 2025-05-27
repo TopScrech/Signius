@@ -30,6 +30,7 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
     }
     
     func getSigninResponse_Webauthn(_ anchor: ASPresentationAnchor) {
+        let decoder = JSONDecoder()
         self.authenticationAnchor = anchor
         
         AF.request(signInUserAPIEndpoint, method: .get).responseData { responseData in
@@ -39,27 +40,29 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
                 
                 if let data = responseData.data {
                     do {
-                        let signinDataResponseDecoded = try JSONDecoder().decode(SignInWebAuthnResponse.self, from: data)
-                        self.signinWithResponse(response: signinDataResponseDecoded)
+                        let signinDataResponseDecoded = try decoder.decode(SignInWebAuthnResponse.self, from: data)
+                        self.signinWithResponse(signinDataResponseDecoded)
                     } catch {
                         print("Error decoding SignInResponse")
                     }
                 }
                 
             case 401:
-                print("401 - Unauthorized user")
+                print("⛔️ 401: Unauthorized user")
                 
             case .some(_):
-                print("Unkown response: \(String(describing: responseData.response?.statusCode))")
+                let statusCode = String(describing: responseData.response?.statusCode)
+                print("Unkown response:", statusCode)
                 
             case .none:
-                print("Response not found \(#function)")
+                print("Response not found", #function)
             }
         }
     }
     
-    func signinWithResponse(response: SignInWebAuthnResponse) {
+    func signinWithResponse(_ response: SignInWebAuthnResponse) {
         let challengeResponseString = response.challenge
+        
         guard let challengeBase64URLDecodedData = challengeResponseString.base64URLDecodedData() else {
             print("Error decoding challengeBase64URLDecodedData")
             return
@@ -110,20 +113,21 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
             AF.request(registerBeginAPIEndpoint, method: .post, parameters: params, encoding: JSONEncoding.default).responseData { responseData in
                 switch responseData.response?.statusCode {
                 case 200:
-                    print("Successfully registered user on Wenauthn. Logging in user now")
+                    print("✅ Successfully registered user on Wenauthn. Logging in")
                     
                 case .none:
-                    print("Response not found \(#function)")
+                    print("Response not found", #function)
                     
                 case .some(_):
-                    print("Unknown response: \(String(describing: responseData.response?.statusCode))")
+                    let statusCode = String(describing: responseData.response?.statusCode)
+                    print("Unknown response:", statusCode)
                 }
             }
+            
             //            sendAuthenticationDataToServer(
             //                passkey: rawAttestationObject?.base64EncodedString(),
             //                credentialId: credentialID.base64EncodedString()
             //            )
-            
             
             didFinishSignIn()
             
@@ -152,17 +156,23 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
                 "type": "public-key"
             ]
             
-            AF.request(signInUserAPIEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { responseData in
+            AF.request(
+                signInUserAPIEndpoint,
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default
+            ).responseData { responseData in
                 switch responseData.response?.statusCode {
                 case 200:
-                    print("Successfully signed in user usig Passkeys")
+                    print("✅ Successfully signed in using Passkeys")
                     self.didFinishSignIn()
                     
                 case .none:
-                    print("Response not found \(#function)")
+                    print("Response not found", #function)
                     
                 case .some(_):
-                    print("Unknown response found: \(String(describing: responseData.response?.statusCode))")
+                    let statusCode = String(describing: responseData.response?.statusCode)
+                    print("Unknown response found:", statusCode)
                 }
             }
             
@@ -184,10 +194,11 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
                 self.isSignedIn = false
                 
             case .none:
-                print("Response not found \(#function)")
+                print("Response not found", #function)
                 
             case .some(_):
-                print("Unknown response: \(String(describing: responseData.response?.statusCode))")
+                let statusCode = String(describing: responseData.response?.statusCode)
+                print("Unknown response:", statusCode)
             }
         }
     }
@@ -200,10 +211,11 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
                 self.isSignedIn = false
                 
             case .none:
-                print("Response not found \(#function)")
+                print("Response not found:", #function)
                 
             case .some(_):
-                print("Unknown response: \(String(describing: responseData.response?.statusCode))")
+                let statusCode = String(describing: responseData.response?.statusCode)
+                print("Unknown response:", statusCode)
             }
         }
     }
@@ -231,6 +243,7 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
 
 extension AuthVM {
     func registerUserCredential_WebAuthn(_ anchor: ASPresentationAnchor, username: String) {
+        let decoder = JSONDecoder()
         self.authenticationAnchor = anchor
         
         let params: Parameters = [
@@ -245,7 +258,7 @@ extension AuthVM {
                 AF.request(registerBeginAPIEndpoint, method: .get).responseData { responseData in
                     if let data = responseData.data {
                         do {
-                            let registerDataResponseDecoded = try JSONDecoder().decode(BeginWebAuthnRegistrationResponse.self, from: data)
+                            let registerDataResponseDecoded = try decoder.decode(BeginWebAuthnRegistrationResponse.self, from: data)
                             self.beginWebAuthnRegistration(response: registerDataResponseDecoded)
                         } catch {
                             print("Error decoding BeginWebAuthnRegistrationResponse")
@@ -272,12 +285,17 @@ extension AuthVM {
         
         let userId = Data(userIdDecoded.utf8)
         
-        guard let challengeBase64EncodedData = challengeResponse.base64URLDecodedData() else {
+        guard
+            let challengeBase64EncodedData = challengeResponse.base64URLDecodedData()
+        else {
             print("Error decoding challengeResponseString to Data")
             return
         }
         
-        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: domain)
+        let publicKeyCredentialProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(
+            relyingPartyIdentifier: domain
+        )
+        
         let registrationRequest = publicKeyCredentialProvider.createCredentialRegistrationRequest(
             challenge: challengeBase64EncodedData,
             name: usernameDecoded,

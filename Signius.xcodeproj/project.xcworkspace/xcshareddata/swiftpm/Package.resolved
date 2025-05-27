@@ -1,13 +1,13 @@
 {
-  "originHash" : "3b29998ddb1043315cca365f31f780c48f78e04d464204fe8789648a66a1e8a2",
+  "originHash" : "fab1aa877d697860a5a1603bf32e56204aa4b34e1172dde59e457f1e45f7a11c",
   "pins" : [
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
-        "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
-        "version" : "5.9.1"
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
-        "revision" : "f82c5e26092d1c9ea91f9b9199390250f6e22107",
-        "version" : "0.9.0"
+        "branch" : "main",
+        "revision" : "b4ffcdfc764889a0def8c74993b3218732cb8351"
       }
     }
   ],
