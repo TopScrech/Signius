@@ -91,7 +91,9 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
             let rawIdObject = credentialRegistration.credentialID.base64EncodedString()
             let clientDataJsonBase64 = credentialRegistration.rawClientDataJSON.base64EncodedString()
             
-            guard let attestationObjectBase64 = credentialRegistration.rawAttestationObject?.base64EncodedString() else {
+            guard
+                let attestationObjectBase64 = credentialRegistration.rawAttestationObject?.base64EncodedString()
+            else {
                 logger.log("Errpr getting attestationObjectBase64")
                 return
             }
