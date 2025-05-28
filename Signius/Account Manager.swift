@@ -2,7 +2,7 @@ import AuthenticationServices
 import Alamofire
 import os
 
-private let domain = "bisquit-id.topscrech.dev/"
+private let domain = "5.83.140.43:1889/"
 private let createUserAPIEndpoint = "https://\(domain)signup"
 private let signInUserAPIEndpoint = "https://\(domain)authenticate"
 private let registerBeginAPIEndpoint = "https://\(domain)makeCredential"

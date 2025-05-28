@@ -13,21 +13,25 @@ struct LoginView: View {
                 .multilineTextAlignment(.center)
                 .title3()
             
-            Button("Log in") {
+            Button {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
                     vm.getSigninResponse_Webauthn(window)
                 }
+            } label: {
+                Text("Log in")
+                    .buttonStyle(.green)
             }
-            .buttonStyle(.green)
             
-            Button("Create an Account") {
+            Button {
                 if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                    let window = windowScene.windows.first {
                     vm.registerUserCredential_WebAuthn(window, username: username)
                 }
+            } label: {
+                Text("Create an Account")
+                    .buttonStyle(.blue)
             }
-            .buttonStyle(.blue)
         }
         .onReceive(NotificationCenter.default.publisher(for: .userSignedIn)) { _ in
             didFinishSignIn()

@@ -4,15 +4,19 @@ struct AccountView: View {
     @Environment(AuthVM.self) private var vm
     
     var body: some View {
-        Button("Sign out") {
+        Button {
             vm.signOutWebauthnUser()
+        } label: {
+            Text("Sign out")
+                .buttonStyle(.red)
         }
-        .buttonStyle(.red)
         
-        Button("Delete user") {
+        Button {
             vm.deleteUserAccount()
+        } label: {
+            Text("Delete user")
+                .buttonStyle(.black)
         }
-        .buttonStyle(.black)
     }
 }
 
