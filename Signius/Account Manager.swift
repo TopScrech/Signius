@@ -104,15 +104,20 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
             ]
             
             let params: [String: Any] = [
-                "id": credentialIDObjectBase64,
-                "rawId": rawIdObject,
+                "id":       credentialIDObjectBase64,
+                "rawId":    rawIdObject,
                 "response": responseObject,
-                "type": "public-key"
+                "type":     "public-key"
             ]
             
             print(params)
             
-            AF.request(registerBeginAPIEndpoint, method: .post, parameters: params, encoding: JSONEncoding.default).responseData { responseData in
+            AF.request(
+                registerBeginAPIEndpoint,
+                method: .post,
+                parameters: params,
+                encoding: JSONEncoding.default
+            ).responseData { responseData in
                 switch responseData.response?.statusCode {
                 case 200:
                     print("✅ Successfully registered user on Wenauthn. Logging in")
@@ -145,17 +150,17 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
             let userHandle = credentialAssertion.userID.base64EncodedString()
             
             let responseObject: [String: Any] = [
-                "clientDataJSON": clientDataJSONBase64,
+                "clientDataJSON":    clientDataJSONBase64,
                 "authenticatorData": authenticatorData,
-                "signature": signature,
-                "userHandle": userHandle
+                "signature":         signature,
+                "userHandle":        userHandle
             ]
             
             let parameters: [String: Any] = [
-                "id": credentialIDObjectBase64,
-                "rawId": rawIDObject,
+                "id":       credentialIDObjectBase64,
+                "rawId":    rawIDObject,
                 "response": responseObject,
-                "type": "public-key"
+                "type":     "public-key"
             ]
             
             AF.request(
@@ -206,7 +211,10 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
     }
     
     func deleteUserAccount() {
-        AF.request(deleteCredentialAPIEndpoint, method: .delete).responseData { responseData in
+        AF.request(
+            deleteCredentialAPIEndpoint,
+            method: .delete
+        ).responseData { responseData in
             switch responseData.response?.statusCode {
             case 204:
                 print("Successfully deleted user account")
@@ -224,7 +232,10 @@ final class AuthVM: NSObject, ASAuthorizationControllerPresentationContextProvid
     
     // Failed
 #warning("part 20 has more error handling")
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithError error: Error
+    ) {
         let logger = Logger()
         
         guard let authorizationError = error as? ASAuthorizationError else {
@@ -252,7 +263,11 @@ extension AuthVM {
             "username": username
         ]
         
-        AF.request(createUserAPIEndpoint, method: .get, parameters: params).responseData { responseData in
+        AF.request(
+            createUserAPIEndpoint,
+            method: .get,
+            parameters: params
+        ).responseData { responseData in
             switch responseData.response?.statusCode {
             case 200:
                 print("Successful")
